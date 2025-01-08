@@ -1,5 +1,7 @@
-"""
-Write a Python function that uses the Jacobi method to solve a system of linear equations given by Ax = b. The function should iterate n times, rounding each intermediate solution to four decimal places, and return the approximate solution x.
+"""Write a Python function that uses the Jacobi method to solve a system
+of linear equations given by Ax = b. The function should iterate n
+times, rounding each intermediate solution to four decimal places, and
+return the approximate solution x.
 
 Example:
         input: A = [[5, -2, 3], [-3, 9, 1], [2, -1, -7]], b = [-1, 2, 3], n=2

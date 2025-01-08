@@ -41,14 +41,20 @@ class Encoder(nn.Module):
     def forward(self, x, mask=None):
         out = self.pos_embed(self.token_embed(x))
         for block in self.encoder_blocks:
-            """
-            Why use the same tensor for Q, K, V?
-            In self-attention, the goal is for each position in the sequence to compute relationships (dependencies) with other
-            positions within the same sequence. Using the same tensor for Q, K, and V ensures that:
-            Q (queries) comes from the same input, so each position is "asking" questions based on itself.
-            K (keys) comes from the same input, so every position "describes" itself in the context of the same sequence.
-            V (values) also comes from the same input, so the information being aggregated is consistent with the rest of the sequence.
-            By sharing the same input tensor, we compute self-similarities between positions in a consistent and natural way.
+            """Why use the same tensor for Q, K, V?
+
+            In self-attention, the goal is for each position in the
+            sequence to compute relationships (dependencies) with other
+            positions within the same sequence. Using the same tensor
+            for Q, K, and V ensures that: Q (queries) comes from the
+            same input, so each position is "asking" questions based on
+            itself. K (keys) comes from the same input, so every
+            position "describes" itself in the context of the same
+            sequence. V (values) also comes from the same input, so the
+            information being aggregated is consistent with the rest of
+            the sequence. By sharing the same input tensor, we compute
+            self-similarities between positions in a consistent and
+            natural way.
             """
             out = block(out, out, out, mask=mask)
 

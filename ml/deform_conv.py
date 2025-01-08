@@ -6,8 +6,8 @@ import numpy as np
 
 
 def bi_interp(M, x, y):
-    """
-    Perform bilinear interpolation for the given x and y coordinates on the M.
+    """Perform bilinear interpolation for the given x and y coordinates
+    on the M.
 
     Args:
         M (numpy.ndarray): Input feature map of shape (C, H, W).
@@ -43,8 +43,7 @@ def bi_interp(M, x, y):
 
 
 def deform_conv2d(M, weights, offsets, stride=1, padding=1):
-    """
-    Perform deformable convolution on the input feature map.
+    """Perform deformable convolution on the input feature map.
 
     Args:
         M (numpy.ndarray): Input feature map of shape (C_in, H_in, W_in).
@@ -105,8 +104,7 @@ def deform_conv2d(M, weights, offsets, stride=1, padding=1):
 
 
 def deformable_roi_pooling(M, rois, offsets, output_size=(7, 7), spatial_scale=1.0):
-    """
-    Perform deformable ROI pooling on the input feature map.
+    """Perform deformable ROI pooling on the input feature map.
 
     Args:
         M (numpy.ndarray): Input feature map of shape (C, H, W).

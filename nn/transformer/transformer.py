@@ -32,8 +32,8 @@ class Transformer(nn.Module):
         self.device = device
 
     def rshift(self, t):
-        """
-        Right-shifts the target sequence by one position and prepends the PAD or START token.
+        """Right-shifts the target sequence by one position and prepends
+        the PAD or START token.
 
         Parameters:
         - t (Tensor): Target sequence (batch_size, tgt_len).

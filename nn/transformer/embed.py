@@ -5,10 +5,9 @@ import math
 
 class TokenEmbedding(nn.Module):
     def __init__(self, vocab_size, d_model):
-        """
-        Embedding class to convert a word into embedding space (numerical representation)
-        :param vocab_size: the vocabulary size
-        :param embed_dim: the embedding dimension
+        """Embedding class to convert a word into embedding space
+        (numerical representation) :param vocab_size: the vocabulary
+        size :param embed_dim: the embedding dimension.
 
         example: if we have 1000 vocabulary size and our embedding is 512,
         then the embedding layer will be 1000x512
@@ -21,26 +20,28 @@ class TokenEmbedding(nn.Module):
         self.embed = nn.Embedding(vocab_size, d_model)
 
     def forward(self, x):
-        """
-        forward pass
-        :param x: the word or sequence of words
-        :return: the numerical representation of the input
+        """Forward pass :param x: the word or sequence of words :return:
+
+        the numerical representation of the input.
         """
         return self.embed(x)
 
 
 class SinusoidalPositionalEncoding(nn.Module):
     def __init__(self, d_model, max_seq_len=5000):
-        """
-        Sinusoidal Positional Embedding or Positional Encoding
-        The general idea here is to add positional encoding to the input embedding
-        before feeding the input vectors to the first encoder/decoder
-        The positional embedding must have the same embedding dimension as in the embedding vectors
-        For the positional encoding we use sin and cos
-        For more details, check "Positional Encoding" section in the "Attention Is All You Need" paper
+        """Sinusoidal Positional Embedding or Positional Encoding The
+        general idea here is to add positional encoding to the input
+        embedding before feeding the input vectors to the first
+        encoder/decoder The positional embedding must have the same
+        embedding dimension as in the embedding vectors For the
+        positional encoding we use sin and cos For more details, check
+        "Positional Encoding" section in the "Attention Is All You Need"
+        paper.
 
-        :param embed_dim: the size of the embedding, this must be the same as in embedding vector
-        :param max_seq_len: the maximum sequence length (max sequence of words)
+        :param embed_dim: the size of the embedding, this must be the
+            same as in embedding vector
+        :param max_seq_len: the maximum sequence length (max sequence of
+            words)
         """
         super(SinusoidalPositionalEncoding, self).__init__()
         self.d_model = d_model

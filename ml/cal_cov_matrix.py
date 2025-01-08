@@ -1,5 +1,8 @@
-"""
-Write a Python function that calculates the covariance matrix from a list of vectors. Assume that the input list represents a dataset where each vector is a feature, and vectors are of equal length.
+"""Write a Python function that calculates the covariance matrix from a
+list of vectors.
+
+Assume that the input list represents a dataset where each vector is a
+feature, and vectors are of equal length.
 """
 
 
@@ -22,4 +25,3 @@ def calculate_covariance_matrix(vectors: list[list[float]]) -> list[list[float]]
 if __name__ == "__main__":
     vectors = [[1, 2, 3], [4, 5, 6]]
     print(calculate_covariance_matrix(vectors))
-    

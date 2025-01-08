@@ -1,17 +1,17 @@
-"""
-Given basis vectors in two different bases B and C for R^3, write a Python function to compute the transformation matrix P from basis B to C.
-"""
+"""Given basis vectors in two different bases B and C for R^3, write a
+Python function to compute the transformation matrix P from basis B to
+C."""
 
 def invert_matrix(matrix: list[list[float]]) -> list[list[float]]:
-    """
-    Compute the inverse of an n x n matrix using Gaussian elimination.
-    
+    """Compute the inverse of an n x n matrix using Gaussian
+    elimination.
+
     Parameters:
     matrix (list[list[float]]): An n x n matrix to invert.
-    
+
     Returns:
     list[list[float]]: The inverse matrix if invertible.
-    
+
     Raises:
     ValueError: If the matrix is not square or not invertible.
     """
@@ -53,10 +53,7 @@ def invert_matrix(matrix: list[list[float]]) -> list[list[float]]:
 
 
 def transform_basis(B: list[list[int]], C: list[list[int]]) -> list[list[float]]:
-    """
-    C = BP
-    P = B^{-1}C
-    """
+    """C = BP P = B^{-1}C."""
     i_b, j_b = len(B), len(B[0])
     i_c, j_c = len(C), len(C[0])
 

@@ -1,5 +1,7 @@
-"""
-Write a Python function that takes the dot product of a matrix and a vector. return -1 if the matrix could not be dotted with the vector
+"""Write a Python function that takes the dot product of a matrix and a
+vector.
+
+return -1 if the matrix could not be dotted with the vector
 """
 
 
