@@ -22,4 +22,4 @@ def calculate_covariance_matrix(vectors: list[list[float]]) -> list[list[float]]
 if __name__ == "__main__":
     vectors = [[1, 2, 3], [4, 5, 6]]
     print(calculate_covariance_matrix(vectors))
-  
+    
