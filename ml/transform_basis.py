@@ -2,6 +2,7 @@
 Python function to compute the transformation matrix P from basis B to
 C."""
 
+
 def invert_matrix(matrix: list[list[float]]) -> list[list[float]]:
     """Compute the inverse of an n x n matrix using Gaussian
     elimination.
@@ -57,7 +58,8 @@ def transform_basis(B: list[list[int]], C: list[list[int]]) -> list[list[float]]
     i_b, j_b = len(B), len(B[0])
     i_c, j_c = len(C), len(C[0])
 
-    if j_b != i_c: raise ValueError("Incompatible matrix dimensions for multiplication")
+    if j_b != i_c:
+        raise ValueError("Incompatible matrix dimensions for multiplication")
 
     P = [[0] * j_c for _ in range(i_b)]
 
@@ -84,13 +86,10 @@ def transform_basis_np(B, C):
     P = C @ B_inv
     return P
 
+
 if __name__ == "__main__":
-    B = [[1, 0, 0], 
-             [0, 1, 0], 
-             [0, 0, 1]]
-    C = [[1, 2.3, 3], 
-            [4.4, 25, 6], 
-            [7.4, 8, 9]]
-    
+    B = [[1, 0, 0], [0, 1, 0], [0, 0, 1]]
+    C = [[1, 2.3, 3], [4.4, 25, 6], [7.4, 8, 9]]
+
     print(transform_basis(B, C))
     print(transform_basis_np(B, C))

@@ -71,9 +71,7 @@ if __name__ == "__main__":
     vocab_size = 10000
     batch_size = 3
 
-    device = (
-        torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
-    )
+    device = torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
 
     token_embedding = TokenEmbedding(vocab_size, d_model).to(device)
     pos_embedding = SinusoidalPositionalEncoding(d_model, seq_length).to(device)

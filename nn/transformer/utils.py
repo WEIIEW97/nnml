@@ -1,6 +1,7 @@
 import copy
 import torch.nn as nn
 
+
 def replicate(m, N=6) -> nn.ModuleList:
     """Method to replicate the existing block to N set of blocks :param
     m: class inherited from nn.Module, mainly it is the encoder or
