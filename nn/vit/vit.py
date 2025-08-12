@@ -40,7 +40,7 @@ class FFN(nn.Module):
 
 
 class MSA(nn.Module):
-    """Implementation of Multihead self attention"""
+    """Implementation of Multihead self attention."""
 
     def __init__(self, dim, heads=8, dim_head=64, dropout=0.1):
         super(MSA, self).__init__()
@@ -82,8 +82,8 @@ class MSA(nn.Module):
 
 class Transformer(nn.Module):
     def __init__(self, dim, num_layers, heads, dim_head, mlp_dim, dropout=0.1):
-        """
-        A standard transformer model with multi-head self-attention and feed-forward layers.
+        """A standard transformer model with multi-head self-attention
+        and feed-forward layers.
 
         Args:
             dim (int): The dimensionality of the input embeddings.
@@ -110,7 +110,7 @@ class Transformer(nn.Module):
         self._init_weights()
 
     def _init_weights(self):
-        """initialize weights for all layers"""
+        """Initialize weights for all layers."""
         for layer in self.layers:
             for module in layer:
                 if isinstance(module, nn.Linear):

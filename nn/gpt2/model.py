@@ -10,16 +10,12 @@ import inspect
 @dataclass
 class GPTConfig:
     block_size: int = 1024
-    vocab_size: int = (
-        50304  # GPT-2 vocab_size of 50257, padded up to nearest multiple of 64 for efficiency
-    )
+    vocab_size: int = 50304  # GPT-2 vocab_size of 50257, padded up to nearest multiple of 64 for efficiency
     n_layer: int = 12
     n_head: int = 12
     n_embd: int = 768
     dropout: float = 0.0
-    bias: bool = (
-        True  # True: bias in Linears and LayerNorms, like GPT-2. False: a bit better and faster
-    )
+    bias: bool = True  # True: bias in Linears and LayerNorms, like GPT-2. False: a bit better and faster
 
 
 class MLP(nn.Module):
@@ -162,11 +158,12 @@ class GPT(nn.Module):
         print(f"number of parameters: {self.get_num_params()/1e6:2f}")
 
     def get_num_params(self, non_embedding=True):
-        """
-        Return the number of parameters in the model.
-        For non-embedding count (default), the position embeddings get subtracted.
-        The token embeddings would too, except due to the parameter sharing these
-        params are actually used as weights in the final layer, so we include them.
+        """Return the number of parameters in the model.
+
+        For non-embedding count (default), the position embeddings get
+        subtracted. The token embeddings would too, except due to the
+        parameter sharing these params are actually used as weights in
+        the final layer, so we include them.
         """
         n_params = sum(p.numel() for p in self.parameters())
         if non_embedding:
@@ -332,7 +329,8 @@ class GPT(nn.Module):
         return optimizer
 
     def estimate_mfu(self, fwdbwd_per_iter, dt):
-        """estimate model flops utilization (MFU) in units of A100 bfloat16 peak FLOPS"""
+        """Estimate model flops utilization (MFU) in units of A100
+        bfloat16 peak FLOPS."""
         # first estimate the number of flops we do per iteration.
         # see PaLM paper Appendix B as ref: https://arxiv.org/abs/2204.02311
         N = self.get_num_params()
@@ -349,10 +347,12 @@ class GPT(nn.Module):
 
     @torch.no_grad()
     def generate(self, idx, max_new_tokens, temperature=1.0, top_k=None):
-        """
-        Take a conditioning sequence of indices idx (LongTensor of shape (b,t)) and complete
-        the sequence max_new_tokens times, feeding the predictions back into the model each time.
-        Most likely you'll want to make sure to be in model.eval() mode of operation for this.
+        """Take a conditioning sequence of indices idx (LongTensor of
+        shape (b,t)) and complete the sequence max_new_tokens times,
+        feeding the predictions back into the model each time.
+
+        Most likely you'll want to make sure to be in model.eval() mode
+        of operation for this.
         """
         for _ in range(max_new_tokens):
             # if the sequence context is growing too long we must crop it at block_size
