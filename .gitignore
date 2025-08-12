@@ -1,11 +1,18 @@
-build
-.vscode
-.idea
-out
+# Build directories
+build/
+out/
+bin/
 
-.cache
-.idea
+# IDE-specific files
+.vscode/
+.idea/
 
-__pycache__
+# Python cache
+__pycache__/
+*.py[cod]
 
-*.ipynb
+# Jupyter notebooks (exclude all .ipynb files)
+**/*.ipynb
+
+# General cache folders
+.cache/
